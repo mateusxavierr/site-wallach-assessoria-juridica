@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
 import { siteConfig, navLinks } from "@/lib/content/site";
+import { assetPath } from "@/lib/basePath";
 import { GlassButtonPhone } from "@/components/ui/GlassButton";
 
 function NavLinks({
@@ -82,7 +83,7 @@ export function Header() {
                 onClick={() => setOpen(false)}
               >
                 <Image
-                  src="/images/logo/wallach-logo-transparent.png"
+                  src={assetPath("/images/logo/wallach-logo-transparent.png")}
                   alt={siteConfig.nome}
                   fill
                   className="object-contain p-0.5 brightness-0 invert"
@@ -120,7 +121,7 @@ export function Header() {
               onClick={() => setOpen(false)}
             >
               <Image
-                src="/images/logo/wallach-logo-transparent.png"
+                src={assetPath("/images/logo/wallach-logo-transparent.png")}
                 alt={siteConfig.nome}
                 width={200}
                 height={200}

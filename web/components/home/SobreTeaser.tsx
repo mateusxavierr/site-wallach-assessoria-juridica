@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionCard } from "@/components/ui/SectionCard";
 import { GvTilt } from "@/components/ui/GvTilt";
+import { assetPath } from "@/lib/basePath";
 
 export function SobreTeaser() {
   return (
@@ -17,7 +18,7 @@ export function SobreTeaser() {
               }}
             >
               <Image
-                src="/images/team/armando-wallach.jpg"
+                src={assetPath("/images/team/armando-wallach.jpg")}
                 alt="Armando Lemos Wallach"
                 fill
                 className="object-cover object-top"

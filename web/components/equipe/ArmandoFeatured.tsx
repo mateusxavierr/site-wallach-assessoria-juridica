@@ -10,6 +10,7 @@ import {
 import { SectionCard } from "@/components/ui/SectionCard";
 import { GlassButton } from "@/components/ui/GlassButton";
 import { GvTilt } from "@/components/ui/GvTilt";
+import { assetPath } from "@/lib/basePath";
 
 const bio = `Armando Wallach fundou o escritório em 2004 em Recife, com a convicção de que advocacia de qualidade deve ser acessível e clara para quem mais precisa.
 
@@ -80,7 +81,7 @@ export function ArmandoFeatured() {
           <GvTilt className="relative h-full min-h-[420px]">
             <div className="absolute inset-0 rounded-2xl overflow-hidden">
               <Image
-                src="/images/team/armando-wallach.jpg"
+                src={assetPath("/images/team/armando-wallach.jpg")}
                 alt="Armando Wallach"
                 fill
                 className="object-cover object-[50%_15%]"

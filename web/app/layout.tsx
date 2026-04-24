@@ -7,10 +7,14 @@ import { FloatingPhoneButton } from "@/components/layout/FloatingPhoneButton";
 import { ScrollAnimationProvider } from "@/components/providers/ScrollAnimationProvider";
 import { Toaster } from "sonner";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.wallach.adv.br";
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.wallach.adv.br").replace(
+  /\/$/,
+  ""
+);
+const ogImageUrl = `${siteUrl}/images/logo/wallach-logo.png`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(siteUrl.endsWith("/") ? siteUrl : `${siteUrl}/`),
   title: "Wallach Assessoria Jurídica | Recife, PE",
   description:
     "Assessoria jurídica em Recife desde 2004. Especialistas em recuperação judicial, direito empresarial e tributário. Fale com nossa equipe.",
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
       "Assessoria jurídica em Recife desde 2004. Especialistas em recuperação judicial, direito empresarial e tributário.",
     images: [
       {
-        url: "/images/logo/wallach-logo.png",
+        url: ogImageUrl,
         width: 200,
         height: 200,
         alt: "Wallach Assessoria Jurídica",
@@ -41,7 +45,7 @@ export const metadata: Metadata = {
     title: "Wallach Assessoria Jurídica | Recife, PE",
     description:
       "Assessoria jurídica em Recife desde 2004. Recuperação judicial, direito empresarial e tributário.",
-    images: ["/images/logo/wallach-logo.png"],
+    images: [ogImageUrl],
   },
 };
 

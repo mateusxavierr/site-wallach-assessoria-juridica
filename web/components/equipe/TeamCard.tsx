@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/cn";
+import { assetPath } from "@/lib/basePath";
 
 type Props = {
   member: {
@@ -23,7 +24,7 @@ export function TeamCard({ member, delayClass = "" }: Props) {
     >
       <div className="relative aspect-[3/4] w-full overflow-hidden">
         <Image
-          src={member.foto}
+            src={assetPath(member.foto)}
           alt={member.nome}
           fill
           className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-700"

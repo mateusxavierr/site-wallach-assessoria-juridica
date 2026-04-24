@@ -6,6 +6,7 @@ import { GvTilt } from "@/components/ui/GvTilt";
 import { BeamDecor } from "@/components/layout/BeamDecor";
 import { SectionCard } from "@/components/ui/SectionCard";
 import { siteConfig } from "@/lib/content/site";
+import { assetPath } from "@/lib/basePath";
 
 export function Hero() {
   return (
@@ -53,7 +54,7 @@ export function Hero() {
             {/* Foto principal */}
             <div className="relative aspect-[3/4] sm:aspect-square w-full scale-110 lg:scale-125 origin-center lg:-translate-x-12">
               <Image
-                src="/images/hero/justica.png"
+                src={assetPath("/images/hero/justica.png")}
                 alt="Themis — Deusa da Justiça"
                 fill
                 className="object-contain object-center"

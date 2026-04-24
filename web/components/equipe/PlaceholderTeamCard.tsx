@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { cn } from "@/lib/cn";
+import { assetPath } from "@/lib/basePath";
 
 type Props = {
   label: string;
@@ -30,7 +31,7 @@ export function PlaceholderTeamCard({
     >
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-slate-800/40">
         <Image
-          src={foto}
+          src={assetPath(foto)}
           alt={label}
           fill
           sizes="(max-width: 768px) 50vw, 25vw"

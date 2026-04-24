@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { siteConfig, navLinks } from "@/lib/content/site";
+import { assetPath } from "@/lib/basePath";
 import { cn } from "@/lib/cn";
 import { FooterScrollTop } from "@/components/layout/FooterScrollTop";
 
@@ -12,7 +13,7 @@ export function Footer() {
           <div className="max-w-sm">
             <div className="flex justify-center mb-6">
               <Image
-                src="/images/logo/wallach-logo-transparent.png"
+                src={assetPath("/images/logo/wallach-logo-transparent.png")}
                 alt={siteConfig.nome}
                 width={300}
                 height={300}

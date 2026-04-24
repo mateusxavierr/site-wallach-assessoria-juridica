@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { assetPath } from "@/lib/basePath";
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -14,7 +15,7 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#1C2E5C",
     icons: [
       {
-        src: `${base}/images/logo/wallach-logo.png`,
+        src: assetPath("/images/logo/wallach-logo.png"),
         sizes: "200x200",
         type: "image/png",
         purpose: "any",
