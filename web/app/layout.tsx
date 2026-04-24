@@ -16,7 +16,6 @@ export const metadata: Metadata = {
     "Assessoria jurídica em Recife desde 2004. Especialistas em recuperação judicial, direito empresarial e tributário. Fale com nossa equipe.",
   applicationName: "Wallach",
   category: "legal services",
-  manifest: "/site.webmanifest",
   appleWebApp: {
     title: "Wallach",
     statusBarStyle: "black-translucent",
