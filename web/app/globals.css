@@ -1,0 +1,405 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --navy-bg: #0d1829;
+    --card-bg: #ffffff;
+    --card-radius: 1.5rem;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply antialiased;
+    background-color: var(--navy-bg);
+    color: #333;
+    font-family: var(--font-body), Lora, serif;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), Georgia, serif;
+  }
+}
+
+/* Section card (DS) */
+.section-card {
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  margin: 2rem 4%;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-card.dark {
+  background-color: #0f1e35;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .section-card {
+    margin: 1rem 12px;
+    border-radius: 1rem;
+  }
+}
+
+/* Motion — from design-system-wallach-v1.1 */
+@keyframes gv-fade-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes gv-clip-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+  }
+  100% {
+    clip-path: inset(0 0% 0 0);
+  }
+}
+
+@keyframes gv-shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(300%) skewX(-15deg);
+  }
+}
+
+@keyframes gv-float-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  85% {
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+@keyframes gv-beam-fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  5% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(200%);
+    opacity: 0;
+  }
+}
+
+@keyframes wallach-word-up {
+  0% {
+    transform: translateY(110%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes wallach-spacing-expand {
+  0% {
+    letter-spacing: -0.08em;
+    opacity: 0;
+  }
+  100% {
+    letter-spacing: -0.02em;
+    opacity: 1;
+  }
+}
+
+@keyframes wallach-fade-left-anim {
+  0% {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes wallach-fade-right-anim {
+  0% {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes wallach-text-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes wallach-underline-grow-anim {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+.wallach-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+.wallach-word {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+.wallach-word.is-visible {
+  animation: wallach-word-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.wallach-spacing {
+  opacity: 0;
+  letter-spacing: -0.08em;
+}
+.wallach-spacing.is-visible {
+  animation: wallach-spacing-expand 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.wallach-fade-left {
+  opacity: 0;
+  transform: translateX(-32px);
+}
+.wallach-fade-left.is-visible {
+  animation: wallach-fade-left-anim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.wallach-fade-right {
+  opacity: 0;
+  transform: translateX(32px);
+}
+.wallach-fade-right.is-visible {
+  animation: wallach-fade-right-anim 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.wallach-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #8090a8 0%,
+    #ffffff 30%,
+    #a0b0c4 50%,
+    #ffffff 70%,
+    #8090a8 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: wallach-text-shimmer 4s linear infinite;
+}
+
+/* Variante do shimmer para fundos claros — usa navy/steel em vez de branco */
+.wallach-shimmer-text-dark {
+  background: linear-gradient(
+    90deg,
+    #1c2e5c 0%,
+    #8090a8 25%,
+    #243870 50%,
+    #8090a8 75%,
+    #1c2e5c 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: wallach-text-shimmer 4s linear infinite;
+}
+
+.wallach-underline-grow::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background-color: #8090a8;
+  transform: scaleX(0);
+  transform-origin: left;
+  margin-top: 6px;
+}
+.wallach-underline-grow.is-visible::after {
+  animation: wallach-underline-grow-anim 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s
+    forwards;
+}
+
+.gv-animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(8px);
+}
+.gv-animate-on-scroll.is-visible {
+  animation: gv-fade-slide-in 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.gv-clip-on-scroll {
+  clip-path: inset(0 100% 0 0);
+}
+.gv-clip-on-scroll.is-visible {
+  animation: gv-clip-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-350 {
+  animation-delay: 0.35s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
+}
+
+.gv-btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+.gv-btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  width: 60%;
+  animation: gv-shimmer 3s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.gv-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(128, 144, 168, 0.5);
+  border-radius: 9999px;
+  animation: gv-float-up linear infinite;
+}
+
+.gv-beam {
+  position: absolute;
+  width: 1px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, #8090a8, transparent);
+  pointer-events: none;
+}
+.gv-beam-1 {
+  animation: gv-beam-fall 6s linear infinite;
+}
+.gv-beam-2 {
+  animation: gv-beam-fall 9s linear infinite;
+  animation-delay: 3s;
+}
+
+/* Tilt 3D (DS) */
+.hover-tilt-3d {
+  transform-style: preserve-3d;
+}
+
+/* Mobile drawer (Header) */
+@keyframes wallach-slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.wallach-slide-up {
+  animation: wallach-slide-up 0.35s cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+
+@keyframes wallach-fade-in-up {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.wallach-fade-in-up {
+  animation: wallach-fade-in-up 0.4s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--navy-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
