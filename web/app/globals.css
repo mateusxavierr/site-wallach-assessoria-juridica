@@ -67,10 +67,12 @@
 
 @keyframes gv-clip-reveal {
   0% {
-    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+    transform: translateX(-1.5rem);
   }
   100% {
-    clip-path: inset(0 0% 0 0);
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -276,7 +278,8 @@
 }
 
 .gv-clip-on-scroll {
-  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+  transform: translateX(-1.5rem);
 }
 .gv-clip-on-scroll.is-visible {
   animation: gv-clip-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
